@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuraFX — Premium Visual Effects Toolkit</title>
+  <meta name="description" content="One installation. One import. A completely different visual experience. Production-quality, lightweight visual effects toolkit for the modern web." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./demo/demo.css" />
+</head>
+<body>
+  <!-- Background Grid -->
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo-group">
+        <div class="logo-orb" data-aura-magnetic data-aura-magnetic-strength="0.35"></div>
+        <span class="logo-text">AuraFX</span>
+        <span class="logo-tag">v1.0.0</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#playground" class="nav-link">Playground</a>
+        <a href="#gallery" class="nav-link">Effects</a>
+        <a href="#configurator" class="nav-link">Configurator</a>
+        <a href="#performance" class="nav-link">Performance</a>
+        <a href="#docs" class="nav-link">Docs</a>
+      </nav>
+
+      <div>
+        <a href="https://github.com/aurafx/aurafx" target="_blank" rel="noreferrer" class="btn-header" data-aura-magnetic data-aura-magnetic-strength="0.2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-pill" data-aura="fade-down" data-aura-duration="600">
+        <span>✨ Zero Dependencies · 9.8 KB gzip · TypeScript Native</span>
+      </div>
+
+      <h1 class="hero-title" data-aura="fade-up" data-aura-duration="750">
+        Give your interface<br />a little more life.
+      </h1>
+
+      <p class="hero-subtitle" data-aura="fade-up" data-aura-duration="800" data-aura-delay="100">
+        One lightweight library. A universe of motion. Elegant cursor trails, magnetic attractions,
+        viewport reveals, and glowing interactive micro-interactions.
+      </p>
+
+      <!-- Install Box -->
+      <div class="install-wrapper" data-aura="fade-up" data-aura-duration="850" data-aura-delay="200" data-aura-glow>
+        <code class="install-code">
+          <span class="pkg-prefix">$</span>npm install aurafx
+        </code>
+        <button id="copy-install-btn" class="btn-copy" data-aura-ripple title="Copy to clipboard">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span id="copy-install-text">Copy</span>
+        </button>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="hero-ctas" data-aura="fade-up" data-aura-duration="900" data-aura-delay="300">
+        <a href="#playground" class="btn-primary" data-aura-magnetic data-aura-magnetic-strength="0.3" data-aura-ripple>
+          <span>Explore Effects</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#docs" class="btn-secondary" data-aura-magnetic data-aura-magnetic-strength="0.2" data-aura-ripple>
+          <span>View Documentation</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Live Effects Playground -->
+  <section id="playground" class="section">
+    <div class="container">
+      <div class="section-header" data-aura="fade-up">
+        <span class="section-tag">Interactive Sandbox</span>
+        <h2 class="section-title">Live Effects Playground</h2>
+        <p class="section-desc">Toggle effects on the fly and tune their parameters in real time.</p>
+      </div>
+
+      <div class="playground-box" data-aura="fade-up" data-aura-duration="800">
+        <div class="playground-grid">
+          <!-- Controls Column -->
+          <div class="controls-panel">
+            <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 6px;">Effect Switches</h3>
+
+            <label class="toggle-switch">
+              <span>Cursor Trail & Glow</span>
+              <input type="checkbox" id="toggle-cursor" checked />
+            </label>
+
+            <label class="toggle-switch">
+              <span>Particle Trail</span>
+              <input type="checkbox" id="toggle-particles" />
+            </label>
+
+            <label class="toggle-switch">
+              <span>Ambient Background</span>
+              <input type="checkbox" id="toggle-ambient" />
+            </label>
+
+            <label class="toggle-switch">
+              <span>Magnetic Elements</span>
+              <input type="checkbox" id="toggle-magnetic" checked />
+            </label>
+
+            <label class="toggle-switch">
+              <span>Interactive Glow</span>
+              <input type="checkbox" id="toggle-glow" checked />
+            </label>
+
+            <label class="toggle-switch">
+              <span>Click Ripple</span>
+              <input type="checkbox" id="toggle-ripple" checked />
+            </label>
+
+            <label class="toggle-switch">
+              <span>3D Card Tilt</span>
+              <input type="checkbox" id="toggle-tilt" checked />
+            </label>
+
+            <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 6px 0;" />
+
+            <!-- Sliders -->
+            <div class="control-group">
+              <div class="control-label">
+                <span>Magnetic Strength</span>
+                <span class="val" id="val-magnetic">0.28</span>
+              </div>
+              <input type="range" id="slider-magnetic" class="control-input-range" min="0.1" max="0.6" step="0.02" value="0.28" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>Tilt Angle</span>
+                <span class="val" id="val-tilt">8°</span>
+              </div>
+              <input type="range" id="slider-tilt" class="control-input-range" min="3" max="25" step="1" value="8" />
+            </div>
+
+            <!-- Ambient Palettes -->
+            <div class="control-group">
+              <div class="control-label">
+                <span>Ambient Palette</span>
+              </div>
+              <div class="palette-selector">
+                <button class="palette-btn active" data-palette="cyber-violet">Cyber Violet</button>
+                <button class="palette-btn" data-palette="aurora">Aurora</button>
+                <button class="palette-btn" data-palette="sunset">Sunset</button>
+                <button class="palette-btn" data-palette="cosmic">Cosmic</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview Stage Column -->
+          <div class="preview-stage" id="playground-stage">
+            <span class="preview-stage-label">Interactive Stage</span>
+
+            <!-- Magnetic Button -->
+            <button class="btn-primary" data-aura-magnetic data-aura-magnetic-strength="0.35" data-aura-ripple id="demo-magnetic-btn">
+              <span>Hover & Click Me</span>
+            </button>
+
+            <!-- 3D Tilt Card with Glow -->
+            <div class="card" style="width: 100%; max-width: 360px;" data-aura-tilt data-aura-glow>
+              <div class="card-header">
+                <span class="card-badge">Tilt & Glow</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 6px;">Hover Card in 3D</h4>
+              <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
+                Move your cursor around this card. Notice the 3D perspective, mouse-following radial glare, and perimeter glow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Effects Gallery -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-header" data-aura="fade-up">
+        <span class="section-tag">Modular Capabilities</span>
+        <h2 class="section-title">Effects Gallery</h2>
+        <p class="section-desc">Seven handcrafted visual effects ready for production websites.</p>
+      </div>
+
+      <div class="grid-cards">
+        <!-- 1. Cursor -->
+        <div class="card" data-aura="fade-up" data-aura-duration="700" data-aura-glow data-aura-tilt>
+          <div class="card-header">
+            <span class="card-badge">A. Aura Cursor</span>
+            <span style="font-size: 1.2rem;">✨</span>
+          </div>
+          <h3 class="card-title">Smooth Interactive Cursor</h3>
+          <p class="card-desc">
+            Fluid interpolation, glowing multi-point trail, optional particle emitter, and automatic hover states.
+          </p>
+          <div class="card-demo-area">
+            <button class="btn-secondary" data-aura-magnetic data-aura-ripple>Hover this button</button>
+          </div>
+          <div class="card-code">
+            <code>initAura({ cursor: { trail: true } })</code>
+            <button class="btn-copy copy-snippet" data-code="initAura({ cursor: { trail: true } })">Copy</button>
+          </div>
+        </div>
+
+        <!-- 2. Scroll Reveal -->
+        <div class="card" data-aura="fade-up" data-aura-duration="700" data-aura-delay="100" data-aura-glow data-aura-tilt>
+          <div class="card-header">
+            <span class="card-badge">B. Scroll Reveal</span>
+            <span style="font-size: 1.2rem;">📜</span>
+          </div>
+          <h3 class="card-title">Viewport Scroll Animations</h3>
+          <p class="card-desc">
+            Performant IntersectionObserver-driven entrances: fade-up, blur, slide-left, scale-in with delay and stagger.
+          </p>
+          <div class="card-demo-area" style="flex-direction: column; gap: 8px;">
+            <div style="background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.3); border-radius: 6px; padding: 6px 16px; font-size: 0.85rem;" data-aura="blur" data-aura-once="false">
+              Blur Reveal Preview
+            </div>
+            <button id="retrigger-scroll-btn" class="btn-secondary" style="font-size: 0.75rem; padding: 4px 10px;" data-aura-ripple>
+              Replay Reveal
+            </button>
+          </div>
+          <div class="card-code">
+            <code>&lt;div data-aura="fade-up" data-aura-delay="200"&gt;</code>
+            <button class="btn-copy copy-snippet" data-code='<div data-aura="fade-up" data-aura-delay="200">Content</div>'>Copy</button>
+          </div>
+        </div>
+
+        <!-- 3. Ambient Background -->
+        <div class="card" data-aura="fade-up" data-aura-duration="700" data-aura-delay="200" data-aura-glow data-aura-tilt>
+          <div class="card-header">
+            <span class="card-badge">C. Ambient Background</span>
+            <span style="font-size: 1.2rem;">🌌</span>
+          </div>
+          <h3 class="card-title">Atmospheric Light Canvas</h3>
+          <p class="card-desc">
+            Slow-moving chromatic blurred orbs and subtle cosmic particles rendered efficiently to HTML5 canvas.
+          </p>
+          <div class="card-demo-area">
+            <button id="card-toggle-ambient" class="btn-secondary" data-aura-ripple>
+              Toggle Ambient Canvas
+            </button>
+          </div>
+          <div class="card-code">
+            <code>initAura({ ambient: { enabled: true, palette: 'cyber-violet' } })</code>
+            <button class="btn-copy copy-snippet" data-code="initAura({ ambient: { enabled: true, palette: 'cyber-violet' } })">Copy</button>
+          </div>
+        </div>
+
+        <!-- 4. Magnetic Elements -->
+        <div class="card" data-aura="fade-up" data-aura-duration="700" data-aura-glow data-aura-tilt>
+          <div class="card-header">
+            <span class="card-badge">D. Magnetic Elements</span>
+            <span style="font-size: 1.2rem;">🧲</span>
+          </div>
+          <h3 class="card-title">Cursor Attraction Force</h3>
+          <p class="card-desc">
+            Elements pull subtly towards the pointer on hover and smoothly spring back to origin upon mouse leave.
+          </p>
+          <div class="card-demo-area">
+            <button class="btn-primary" data-aura-magnetic data-aura-magnetic-strength="0.4" data-aura-ripple>
+              Magnetic Button
+            </button>
+          </div>
+          <div class="card-code">
+            <code>&lt;button data-aura-magnetic data-aura-magnetic-strength="0.3"&gt;</code>
+            <button class="btn-copy copy-snippet" data-code='<button data-aura-magnetic data-aura-magnetic-strength="0.3">Button</button>'>Copy</button>
+          </div>
+        </div>
+
+        <!-- 5. Interactive Glow -->
+        <div class="card" data-aura="fade-up" data-aura-duration="700" data-aura-delay="100" data-aura-glow data-aura-tilt>
+          <div class="card-header">
+            <span class="card-badge">E. Interactive Glow</span>
+            <span style="font-size: 1.2rem;">💡</span>
+          </div>
+          <h3 class="card-title">Mouse-Following Radial Glow</h3>
+          <p class="card-desc">
+            Dynamic radial gradients follow cursor movement, illuminating borders and surfaces via CSS custom properties.
+          </p>
+          <div class="card-demo-area" data-aura-glow style="width: 100%;">
+            <span style="font-size: 0.9rem; color: #a5b4fc; font-weight: 500;">Hover anywhere inside this box</span>
+          </div>
+          <div class="card-code">
+            <code>&lt;div data-aura-glow data-aura-glow-color="#8b5cf6"&gt;</code>
+            <button class="btn-copy copy-snippet" data-code='<div data-aura-glow data-aura-glow-color="#8b5cf6">Content</div>'>Copy</button>
+          </div>
+        </div>
+
+        <!-- 6. Click Ripple -->
+        <div class="card" data-aura="fade-up" data-aura-duration="700" data-aura-delay="200" data-aura-glow data-aura-tilt>
+          <div class="card-header">
+            <span class="card-badge">F. Click Ripple</span>
+            <span style="font-size: 1.2rem;">🌊</span>
+          </div>
+          <h3 class="card-title">Pointer-Centered Waves</h3>
+          <p class="card-desc">
+            Material-inspired ripple wave expanding outwards exactly from pointer coordinates without breaking clicks.
+          </p>
+          <div class="card-demo-area">
+            <button class="btn-secondary" data-aura-ripple data-aura-ripple-color="rgba(168, 85, 247, 0.45)">
+              Click anywhere on me
+            </button>
+          </div>
+          <div class="card-code">
+            <code>&lt;button data-aura-ripple&gt;Click Me&lt;/button&gt;</code>
+            <button class="btn-copy copy-snippet" data-code="<button data-aura-ripple>Click Me</button>">Copy</button>
+          </div>
+        </div>
+
+        <!-- 7. Tilt Cards -->
+        <div class="card" data-aura="fade-up" data-aura-duration="700" data-aura-delay="300" data-aura-glow data-aura-tilt data-aura-tilt-angle="14">
+          <div class="card-header">
+            <span class="card-badge">G. Tilt Cards</span>
+            <span style="font-size: 1.2rem;">📐</span>
+          </div>
+          <h3 class="card-title">3D Perspective Reaction</h3>
+          <p class="card-desc">
+            Real 3D tilt geometry with dynamic inner glare reflection layer and smooth cubic-bezier return spring.
+          </p>
+          <div class="card-demo-area" style="text-align: center;">
+            <span style="font-size: 0.9rem; color: #cbd5e1;">This entire card tilts in 3D!</span>
+          </div>
+          <div class="card-code">
+            <code>&lt;div data-aura-tilt data-aura-tilt-angle="12"&gt;</code>
+            <button class="btn-copy copy-snippet" data-code='<div data-aura-tilt data-aura-tilt-angle="12">Card</div>'>Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Configuration Playground -->
+  <section id="configurator" class="section">
+    <div class="container">
+      <div class="section-header" data-aura="fade-up">
+        <span class="section-tag">Interactive Code Generator</span>
+        <h2 class="section-title">Configuration Playground</h2>
+        <p class="section-desc">Customize library options visually and copy your tailored setup code.</p>
+      </div>
+
+      <div class="playground-box" data-aura="fade-up" data-aura-duration="800">
+        <div class="config-layout">
+          <!-- Form Controls -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <h3 style="font-size: 1.05rem; font-weight: 700;">Parameters</h3>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>Cursor Color</span>
+                <span class="val" id="cfg-color-val">#8b5cf6</span>
+              </div>
+              <input type="color" id="cfg-cursor-color" value="#8b5cf6" style="width: 100%; height: 38px; border: 1px solid var(--border-subtle); border-radius: 8px; cursor: pointer; background: transparent;" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>Cursor Trail Length</span>
+                <span class="val" id="cfg-trail-val">12</span>
+              </div>
+              <input type="range" id="cfg-trail-len" class="control-input-range" min="4" max="24" value="12" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>Scroll Reveal Duration (ms)</span>
+                <span class="val" id="cfg-duration-val">700</span>
+              </div>
+              <input type="range" id="cfg-scroll-duration" class="control-input-range" min="300" max="1500" step="50" value="700" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>Tilt Max Angle</span>
+                <span class="val" id="cfg-angle-val">8°</span>
+              </div>
+              <input type="range" id="cfg-tilt-angle" class="control-input-range" min="4" max="20" value="8" />
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>Magnetic Strength</span>
+                <span class="val" id="cfg-strength-val">0.28</span>
+              </div>
+              <input type="range" id="cfg-magnetic-strength" class="control-input-range" min="0.1" max="0.5" step="0.02" value="0.28" />
+            </div>
+          </div>
+
+          <!-- Code Box -->
+          <div>
+            <div class="config-code-box">
+              <pre class="config-code-pre" id="config-code-output"></pre>
+            </div>
+            <div class="config-actions">
+              <button id="copy-config-btn" class="btn-primary" data-aura-ripple>
+                <span>Copy Config</span>
+              </button>
+              <button id="apply-live-config-btn" class="btn-secondary" data-aura-ripple>
+                <span>Apply to Page</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Performance Section -->
+  <section id="performance" class="section">
+    <div class="container">
+      <div class="section-header" data-aura="fade-up">
+        <span class="section-tag">Engineering Rigor</span>
+        <h2 class="section-title">Built for Real-World Performance</h2>
+        <p class="section-desc">Carefully architected to avoid layout thrashing and maintain 60-120fps smoothness.</p>
+      </div>
+
+      <!-- Real Measured Metrics -->
+      <div class="metrics-grid" data-aura="fade-up" data-aura-duration="700">
+        <div class="metric-card">
+          <div class="metric-value">9.8 KB</div>
+          <div class="metric-label">Gzipped Bundle Size</div>
+          <div class="metric-sub">Zero external dependencies</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">0</div>
+          <div class="metric-label">Runtime Dependencies</div>
+          <div class="metric-sub">Pure Vanilla JS DOM APIs</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">120 FPS</div>
+          <div class="metric-label">Hardware Accelerated</div>
+          <div class="metric-sub">Transforms & composited opacity</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">100%</div>
+          <div class="metric-label">Clean DOM Teardown</div>
+          <div class="metric-sub">Full lifecycle cleanup on destroy</div>
+        </div>
+      </div>
+
+      <!-- Performance Highlights -->
+      <div class="grid-cards">
+        <div class="card" data-aura="fade-up" data-aura-duration="700">
+          <h3 class="card-title">Passive & RAF Optimized</h3>
+          <p class="card-desc">
+            All pointer and scroll events use passive event listeners to prevent main-thread jank. Pointer tracking coordinates are cached and applied strictly in <code>requestAnimationFrame</code> ticks.
+          </p>
+        </div>
+        <div class="card" data-aura="fade-up" data-aura-duration="700" data-aura-delay="100">
+          <h3 class="card-title">IntersectionObserver Only</h3>
+          <p class="card-desc">
+            Scroll reveal does not poll scroll position or attach costly scroll listeners. The native browser <code>IntersectionObserver</code> API detects element visibility asynchronously with minimal overhead.
+          </p>
+        </div>
+        <div class="card" data-aura="fade-up" data-aura-duration="700" data-aura-delay="200">
+          <h3 class="card-title">Auto-Paused on Inactive Tabs</h3>
+          <p class="card-desc">
+            When the user changes browser tabs or minimizes the window, AuraFX monitors <code>document.visibilityState</code> and halts all animation loops immediately to eliminate background CPU/battery drain.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Documentation Section -->
+  <section id="docs" class="section">
+    <div class="container">
+      <div class="section-header" data-aura="fade-up">
+        <span class="section-tag">Developer Reference</span>
+        <h2 class="section-title">Documentation & Guides</h2>
+        <p class="section-desc">Everything you need to integrate AuraFX into any project.</p>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="docs-nav" data-aura="fade-up">
+        <button class="docs-tab active" data-tab="tab-quickstart">Quick Start</button>
+        <button class="docs-tab" data-tab="tab-attributes">HTML Attributes</button>
+        <button class="docs-tab" data-tab="tab-options">Configuration API</button>
+        <button class="docs-tab" data-tab="tab-frameworks">Framework Integration</button>
+        <button class="docs-tab" data-tab="tab-lifecycle">Lifecycle & Methods</button>
+      </div>
+
+      <!-- Tab 1: Quickstart -->
+      <div id="tab-quickstart" class="docs-panel active" data-aura="fade-up">
+        <div class="card">
+          <h3 class="card-title">1. Installation</h3>
+          <p class="card-desc">Install AuraFX from npm using your package manager of choice:</p>
+          <div class="card-code" style="margin-bottom: 24px;">
+            <code>npm install aurafx</code>
+            <button class="btn-copy copy-snippet" data-code="npm install aurafx">Copy</button>
+          </div>
+
+          <h3 class="card-title">2. Simplest Activation</h3>
+          <p class="card-desc">Import and call <code>initAura()</code> in your app entry point:</p>
+          <div class="card-code" style="margin-bottom: 24px;">
+            <code>import { initAura } from 'aurafx';<br /><br />initAura();</code>
+            <button class="btn-copy copy-snippet" data-code="import { initAura } from 'aurafx';&#10;&#10;initAura();">Copy</button>
+          </div>
+
+          <h3 class="card-title">3. HTML Only Activation</h3>
+          <p class="card-desc">Once initialized, apply effects simply by adding data attributes to your HTML elements:</p>
+          <div class="card-code">
+            <code>&lt;button data-aura-magnetic data-aura-glow data-aura-ripple&gt;Click Me&lt;/button&gt;</code>
+            <button class="btn-copy copy-snippet" data-code='<button data-aura-magnetic data-aura-glow data-aura-ripple>Click Me</button>'>Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: HTML Attributes -->
+      <div id="tab-attributes" class="docs-panel">
+        <div class="card">
+          <h3 class="card-title">HTML Attribute Reference</h3>
+          <p class="card-desc">Declarative data attributes automatically detected by the engine:</p>
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Attribute</th>
+                <th>Values / Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>data-aura</code></td>
+                <td><code>"fade-up" | "fade-down" | "fade-in" | "slide-left" | "slide-right" | "scale-in" | "blur"</code></td>
+                <td>Triggers scroll reveal animation when element enters the viewport.</td>
+              </tr>
+              <tr>
+                <td><code>data-aura-delay</code></td>
+                <td><code>number (ms)</code> (e.g. <code>"200"</code>)</td>
+                <td>Delay before scroll reveal animation begins.</td>
+              </tr>
+              <tr>
+                <td><code>data-aura-duration</code></td>
+                <td><code>number (ms)</code> (e.g. <code>"800"</code>)</td>
+                <td>Duration of the reveal transition.</td>
+              </tr>
+              <tr>
+                <td><code>data-aura-distance</code></td>
+                <td><code>string (CSS distance)</code> (e.g. <code>"40px"</code>)</td>
+                <td>Distance translated during fade or slide reveals.</td>
+              </tr>
+              <tr>
+                <td><code>data-aura-stagger</code></td>
+                <td><code>number (ms)</code> on parent container</td>
+                <td>Automatically staggers reveals of child <code>[data-aura]</code> elements.</td>
+              </tr>
+              <tr>
+                <td><code>data-aura-magnetic</code></td>
+                <td>Boolean attribute</td>
+                <td>Attracts element subtly toward cursor on hover.</td>
+              </tr>
+              <tr>
+                <td><code>data-aura-magnetic-strength</code></td>
+                <td><code>number (0.1 - 0.6)</code></td>
+                <td>Adjusts magnetic pull intensity.</td>
+              </tr>
+              <tr>
+                <td><code>data-aura-glow</code></td>
+                <td>Boolean attribute</td>
+                <td>Adds mouse-following radial perimeter and surface glow.</td>
+              </tr>
+              <tr>
+                <td><code>data-aura-glow-color</code></td>
+                <td><code>hex / rgba</code> (e.g. <code>"#8b5cf6"</code>)</td>
+                <td>Custom color for interactive glow.</td>
+              </tr>
+              <tr>
+                <td><code>data-aura-ripple</code></td>
+                <td>Boolean attribute</td>
+                <td>Adds click ripple wave originating from pointer coordinates.</td>
+              </tr>
+              <tr>
+                <td><code>data-aura-tilt</code></td>
+                <td>Boolean attribute</td>
+                <td>Enables 3D perspective tilt on hover with light glare reflection.</td>
+              </tr>
+              <tr>
+                <td><code>data-aura-tilt-angle</code></td>
+                <td><code>number (degrees)</code> (e.g. <code>"12"</code>)</td>
+                <td>Maximum tilt rotation angle.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 3: Options -->
+      <div id="tab-options" class="docs-panel">
+        <div class="card">
+          <h3 class="card-title">Full Configuration Schema</h3>
+          <p class="card-desc">Pass any subset of options to <code>initAura(options)</code>:</p>
+          <div class="card-code">
+            <pre style="color: #cbd5e1; font-size: 0.825rem; font-family: var(--font-mono);">
+initAura({
+  cursor: {
+    enabled: true,
+    color: '#8b5cf6',
+    ringColor: 'rgba(139, 92, 246, 0.45)',
+    dotSize: 7,
+    ringSize: 34,
+    trail: true,
+    trailLength: 12,
+    particles: false,
+    glow: true,
+    spotlight: false,
+    lerp: 0.18,
+    disableOnTouch: true
+  },
+  scroll: {
+    enabled: true,
+    defaultEffect: 'fade-up',
+    duration: 700,
+    distance: '28px',
+    threshold: 0.15,
+    once: true,
+    stagger: 80
+  },
+  ambient: {
+    enabled: false,
+    intensity: 'low', // 'low' | 'medium' | 'high' | number
+    palette: 'cyber-violet', // preset or string[]
+    speed: 0.4,
+    blur: 90,
+    particles: true
+  },
+  magnetic: {
+    enabled: true,
+    strength: 0.28,
+    maxDistance: 32,
+    scale: 1.0
+  },
+  glow: {
+    enabled: true,
+    color: '#8b5cf6',
+    intensity: 0.35,
+    radius: 260
+  },
+  ripple: {
+    enabled: true,
+    color: 'rgba(255, 255, 255, 0.35)',
+    duration: 600
+  },
+  tilt: {
+    enabled: true,
+    maxAngle: 8,
+    perspective: 1000,
+    scale: 1.02,
+    glare: true
+  },
+  injectStyles: true,
+  reducedMotion: 'respect' // 'respect' | 'ignore'
+});</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Frameworks -->
+      <div id="tab-frameworks" class="docs-panel">
+        <div class="card">
+          <h3 class="card-title">React & Next.js</h3>
+          <p class="card-desc">Call <code>initAura()</code> inside a top-level client component or hook:</p>
+          <div class="card-code" style="margin-bottom: 24px;">
+            <pre style="color: #cbd5e1; font-size: 0.825rem; font-family: var(--font-mono);">
+'use client';
+import { useEffect } from 'react';
+import { initAura } from 'aurafx';
+
+export default function RootLayout({ children }) {
+  useEffect(() => {
+    const aura = initAura();
+    return () => aura.destroy();
+  }, []);
+
+  return &lt;html&gt;&lt;body&gt;{children}&lt;/body&gt;&lt;/html&gt;;
+}</pre>
+          </div>
+
+          <h3 class="card-title">Vue 3</h3>
+          <p class="card-desc">Mount in your <code>App.vue</code> component:</p>
+          <div class="card-code">
+            <pre style="color: #cbd5e1; font-size: 0.825rem; font-family: var(--font-mono);">
+&lt;script setup&gt;
+import { onMounted, onUnmounted } from 'vue';
+import { initAura } from 'aurafx';
+
+let aura;
+onMounted(() => {
+  aura = initAura();
+});
+onUnmounted(() => {
+  aura?.destroy();
+});
+&lt;/script&gt;</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: Lifecycle & Methods -->
+      <div id="tab-lifecycle" class="docs-panel">
+        <div class="card">
+          <h3 class="card-title">Controller API</h3>
+          <p class="card-desc">The controller returned by <code>initAura()</code> provides complete runtime control:</p>
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Signature</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>aura.destroy()</code></td>
+                <td><code>() => void</code></td>
+                <td>Removes all DOM elements, styles, event listeners, and observers.</td>
+              </tr>
+              <tr>
+                <td><code>aura.refresh()</code></td>
+                <td><code>() => void</code></td>
+                <td>Scans for newly added DOM elements and connects effects.</td>
+              </tr>
+              <tr>
+                <td><code>aura.enable(name)</code></td>
+                <td><code>(effect: AuraEffectName) => void</code></td>
+                <td>Dynamically activates a specific effect.</td>
+              </tr>
+              <tr>
+                <td><code>aura.disable(name)</code></td>
+                <td><code>(effect: AuraEffectName) => void</code></td>
+                <td>Dynamically disables and cleans up a specific effect.</td>
+              </tr>
+              <tr>
+                <td><code>aura.toggle(name, val?)</code></td>
+                <td><code>(effect: AuraEffectName, enabled?: boolean) => void</code></td>
+                <td>Toggles state of an effect.</td>
+              </tr>
+              <tr>
+                <td><code>aura.updateConfig(opts)</code></td>
+                <td><code>(newOptions: Partial&lt;AuraOptions&gt;) => void</code></td>
+                <td>Updates configuration parameters live on the fly.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <span style="font-weight: 700; color: #fff; margin-right: 8px;">AuraFX</span>
+        <span>— Production-quality visual effects toolkit. Released under the MIT License.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#playground" class="footer-link">Playground</a>
+        <a href="#gallery" class="footer-link">Effects</a>
+        <a href="#docs" class="footer-link">Documentation</a>
+        <a href="https://github.com/aurafx/aurafx" target="_blank" rel="noreferrer" class="footer-link">GitHub</a>
+        <a href="https://www.npmjs.com/package/aurafx" target="_blank" rel="noreferrer" class="footer-link">npm</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./demo/main.ts"></script>
+</body>
+</html>

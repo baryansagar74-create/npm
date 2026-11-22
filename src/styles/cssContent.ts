@@ -1,0 +1,294 @@
+export const CORE_CSS = `
+.aura-cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999999;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.aura-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1000001;
+  transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease,
+              opacity 0.2s ease;
+  will-change: transform;
+}
+
+.aura-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid;
+  z-index: 1000000;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease,
+              background-color 0.25s ease,
+              opacity 0.2s ease;
+  will-change: transform;
+}
+
+.aura-cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 999998;
+  filter: blur(28px);
+  will-change: transform, opacity;
+  transition: opacity 0.3s ease;
+}
+
+.aura-cursor-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  filter: blur(50px);
+  will-change: transform;
+}
+
+.aura-cursor-trail-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+  will-change: transform, opacity;
+}
+
+.aura-cursor-particle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+  will-change: transform, opacity;
+}
+
+.aura-cursor-hover .aura-cursor-ring {
+  transform: translate(-50%, -50%) scale(1.6);
+  background-color: rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.8);
+}
+
+.aura-cursor-hover .aura-cursor-dot {
+  transform: translate(-50%, -50%) scale(0.6);
+  opacity: 0.8;
+}
+
+.aura-cursor-hidden {
+  opacity: 0 !important;
+}
+
+[data-aura] {
+  opacity: 0;
+  will-change: transform, opacity, filter;
+  transition-property: transform, opacity, filter;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-aura="fade-up"],
+[data-aura=""] {
+  transform: translateY(var(--aura-distance, 28px));
+}
+
+[data-aura="fade-down"] {
+  transform: translateY(calc(var(--aura-distance, 28px) * -1));
+}
+
+[data-aura="slide-left"] {
+  transform: translateX(var(--aura-distance, 35px));
+}
+
+[data-aura="slide-right"] {
+  transform: translateX(calc(var(--aura-distance, 35px) * -1));
+}
+
+[data-aura="scale-in"] {
+  transform: scale(0.92);
+}
+
+[data-aura="blur"] {
+  filter: blur(12px);
+  transform: translateY(16px);
+}
+
+[data-aura="fade-in"] {
+  transform: none;
+}
+
+[data-aura].aura-revealed {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: blur(0) !important;
+}
+
+.aura-ambient-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.aura-ambient-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+[data-aura-magnetic] {
+  will-change: transform;
+  transform-style: preserve-3d;
+  display: inline-block;
+}
+
+[data-aura-glow] {
+  position: relative;
+  isolation: isolate;
+  --aura-glow-x: 50%;
+  --aura-glow-y: 50%;
+  --aura-glow-color: rgba(139, 92, 246, 0.35);
+  --aura-glow-opacity: 0;
+  --aura-glow-radius: 260px;
+}
+
+[data-aura-glow]::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    var(--aura-glow-radius) circle at var(--aura-glow-x) var(--aura-glow-y),
+    var(--aura-glow-color),
+    transparent 70%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: var(--aura-glow-opacity);
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+[data-aura-glow]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    var(--aura-glow-radius) circle at var(--aura-glow-x) var(--aura-glow-y),
+    var(--aura-glow-color),
+    transparent 65%
+  );
+  pointer-events: none;
+  opacity: calc(var(--aura-glow-opacity) * 0.45);
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+[data-aura-ripple] {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.aura-ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  animation: aura-ripple-anim linear forwards;
+}
+
+@keyframes aura-ripple-anim {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3.5);
+    opacity: 0;
+  }
+}
+
+[data-aura-tilt] {
+  transform-style: preserve-3d;
+  will-change: transform;
+  position: relative;
+  overflow: hidden;
+}
+
+.aura-tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--aura-glare-x, 50%) var(--aura-glare-y, 50%),
+    rgba(255, 255, 255, var(--aura-glare-opacity, 0.22)),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: overlay;
+  z-index: 2;
+}
+
+[data-aura-tilt]:hover .aura-tilt-glare {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aura-cursor-container,
+  .aura-ambient-wrapper {
+    display: none !important;
+  }
+  [data-aura] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  [data-aura-magnetic],
+  [data-aura-tilt] {
+    transform: none !important;
+    transition: none !important;
+  }
+  .aura-ripple-wave {
+    animation: none !important;
+    display: none !important;
+  }
+}
+`;
